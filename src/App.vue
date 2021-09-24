@@ -60,7 +60,8 @@ export default {
      },
   
   updated(){
-    console.log("something was updated please rerender")
+    console.log("something was updated please rerender", this.dagboksArray)
+    //catch updates made to dagboksarray för att skippa fulrendering genom reload()
 
   },
 
@@ -89,6 +90,7 @@ export default {
       this.dagboksArray.push({date:event.target.DateInput.value, text:event.target.textInput.value}),
       console.log(JSON.stringify(this.dagboksArray))
       localStorage.setItem("Posts", JSON.stringify(this.dagboksArray))
+      //horrible solution to force the whole page to reload. will try to solve in another way, probably with life cycle hooks
       location.reload();
       
      
